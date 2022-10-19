@@ -15,7 +15,7 @@ export class ModalService {
   constructor() {}
 
   register(id: modal) {
-    const existingModal = !this.modals.find(modal => modal.id === id)
+    const existingModal = this.modals.find(modal => modal.id === id)
     if (existingModal) return
 
     this.modals.push({id, visible: false})
