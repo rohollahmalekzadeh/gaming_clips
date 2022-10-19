@@ -1,0 +1,32 @@
+<div
+  class="z-50 fixed inset-0 overflow-y-auto"
+  id="modal"
+  [ngClass]="{hidden: modalId && !modalService.isModalOpen(modalId)}"
+>
+  <div
+    class="flex justify-center items-center min-h-screen pt-4 px-20 pb-20 text-center sm:p-0"
+  >
+    <div
+      class="fixed inset-0 transition-opacity duration-300"
+      (click)="closeModal()"
+    >
+      <div class="absolute inset-0 bg-gray-800 opacity-75"></div>
+    </div>
+
+    <div
+      class="z-50 inline-block bg-secondary rounded-lg text-left overflow-hidden shadow-xl transform transition-all duration-300 max-w-sm md:max-w-xl lg:max-w-4xl"
+    >
+      <div class="py-4 text-left px-6">
+        <div class="flex justify-between items-center pb-4">
+          <ng-content select="[heading]"></ng-content>
+
+          <span class="modal-close cursor-pointer z-50" (click)="closeModal()"
+            >&#x2715;</span
+          >
+        </div>
+
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>
