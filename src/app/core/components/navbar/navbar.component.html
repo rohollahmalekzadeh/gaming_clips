@@ -7,7 +7,7 @@
     <div class="text-white text-sm md:text-base">
       <ul class="flex items-center mt-1 gap-x-5">
         <li class="relative">
-          <a class="group" href="#">
+          <a class="group" href="#" (click)="openModal($event)">
             <span
               class="absolute transition-all duration-300 -bottom-1 left-1/2 w-0 h-[2px] bg-red-400 group-hover:w-1/2"
             ></span>
@@ -69,3 +69,5 @@
     </div>
   </nav>
 </header>
+
+<app-auth-modal></app-auth-modal>
