@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core'
-import {modal} from 'src/app/core/enums/modal.enum'
+import {modal} from 'src/app/core/enums/enum-modal'
 
 interface IModal {
   id: string
