@@ -1,13 +1,25 @@
-<header id="header" class="bg-secondary overflow-hidden">
+<header
+  id="header"
+  class="bg-secondary overflow-hidden w-full fixed z-[60] top-0 left-0"
+  [ngClass]="{'opacity-80': opacity}"
+>
   <nav class="container flex justify-between mx-auto items-center py-6 px-4">
-    <a class="text-xl md:text-3xl text-indigo-400 font-bold uppercase" href="#"
+    <a
+      class="text-xl md:text-3xl cursor-pointer text-indigo-400 font-bold uppercase"
+      routerLink="/"
       >Clips
     </a>
 
     <div class="text-white text-sm md:text-base">
       <ul class="flex items-center mt-1 gap-x-5">
-        <li class="relative">
-          <a class="group" href="#" (click)="openModal($event)">
+        <li
+          class="relative group cursor-pointer"
+          *ngIf="
+            (authService.isAuthenticated$ | async) === false;
+            else authLinks
+          "
+        >
+          <a href="#" (click)="openModal($event)">
             <span
               class="absolute transition-all duration-300 -bottom-1 left-1/2 w-0 h-[2px] bg-red-400 group-hover:w-1/2"
             ></span>
@@ -17,45 +29,56 @@
             Login / Register
           </a>
         </li>
+        <ng-template #authLinks>
+          <li class="relative group cursor-pointer">
+            <a
+              [routerLinkActiveOptions]="{
+                queryParams: 'ignored',
+                matrixParams: 'exact',
+                paths: 'exact',
+                fragment: 'exact'
+              }"
+              routerLink="/manage"
+              [queryParams]="{sort: 1}"
+              routerLinkActive="text-indigo-400"
+            >
+              <span
+                class="absolute transition-all duration-300 -bottom-1 left-1/2 w-0 h-[2px] bg-red-400 group-hover:w-1/2"
+              ></span>
+              <span
+                class="absolute transition-all duration-300 -bottom-1 right-1/2 w-0 h-[2px] bg-red-400 group-hover:w-1/2"
+              ></span>
+              Manage
+            </a>
+          </li>
 
-        <li class="relative">
-          <a class="group" href="#">
-            <span
-              class="absolute transition-all duration-300 -bottom-1 left-1/2 w-0 h-[2px] bg-red-400 group-hover:w-1/2"
-            ></span>
-            <span
-              class="absolute transition-all duration-300 -bottom-1 right-1/2 w-0 h-[2px] bg-red-400 group-hover:w-1/2"
-            ></span>
-            Manage
-          </a>
-        </li>
+          <li class="relative group cursor-pointer">
+            <a class="" routerLink="/upload" routerLinkActive="text-indigo-400">
+              <span
+                class="absolute transition-all duration-300 -bottom-1 left-1/2 w-0 h-[2px] bg-red-400 group-hover:w-1/2"
+              ></span>
+              <span
+                class="absolute transition-all duration-300 -bottom-1 right-1/2 w-0 h-[2px] bg-red-400 group-hover:w-1/2"
+              ></span>
+              Upload
+            </a>
+          </li>
 
-        <li class="relative">
-          <a class="group" href="#">
-            <span
-              class="absolute transition-all duration-300 -bottom-1 left-1/2 w-0 h-[2px] bg-red-400 group-hover:w-1/2"
-            ></span>
-            <span
-              class="absolute transition-all duration-300 -bottom-1 right-1/2 w-0 h-[2px] bg-red-400 group-hover:w-1/2"
-            ></span>
-            Upload
-          </a>
-        </li>
+          <li class="relative group cursor-pointer">
+            <a href="#" (click)="logout($event)">
+              <span
+                class="absolute transition-all duration-300 -bottom-1 left-1/2 w-0 h-[2px] bg-red-400 group-hover:w-1/2"
+              ></span>
+              <span
+                class="absolute transition-all duration-300 -bottom-1 right-1/2 w-0 h-[2px] bg-red-400 group-hover:w-1/2"
+              ></span>
+              logout
+            </a>
+          </li>
+        </ng-template>
 
-        <li class="relative">
-          <a class="group" href="#">
-            <span
-              class="absolute transition-all duration-300 -bottom-1 left-1/2 w-0 h-[2px] bg-red-400 group-hover:w-1/2"
-            ></span>
-            <span
-              class="absolute transition-all duration-300 -bottom-1 right-1/2 w-0 h-[2px] bg-red-400 group-hover:w-1/2"
-            ></span>
-            logout
-          </a>
-        </li>
-
-        <li class="relative">
-          <a class="group" href="#">
+        <li class="relative group cursor-pointer">
+          <a routerLink="/about" routerLinkActive="text-indigo-400">
             <span
               class="absolute transition-all duration-300 -bottom-1 left-1/2 w-0 h-[2px] bg-red-400 group-hover:w-1/2"
             ></span>
@@ -69,5 +92,3 @@
     </div>
   </nav>
 </header>
-
-<app-auth-modal></app-auth-modal>
