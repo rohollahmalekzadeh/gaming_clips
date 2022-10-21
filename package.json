@@ -23,6 +23,7 @@
     "@angular/router": "^14.2.0",
     "@ffmpeg/core": "^0.11.0",
     "@ffmpeg/ffmpeg": "^0.11.5",
+    "@types/node": "^18.11.3",
     "@types/uuid": "^8.3.4",
     "ngx-mask": "^14.2.3",
     "rxjs": "~7.5.0",
