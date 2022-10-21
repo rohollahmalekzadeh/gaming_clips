@@ -23,9 +23,9 @@ import {of, combineLatest, BehaviorSubject} from 'rxjs'
   providedIn: 'root',
 })
 export class ClipService implements Resolve<IClip | null> {
-  public clipsCollection: AngularFirestoreCollection<IClip>
-  pageClips: IClip[] = []
-  pendingReq = false
+  private clipsCollection: AngularFirestoreCollection<IClip>
+  private pageClips: IClip[] = []
+  private pendingReq = false
 
   constructor(
     private db: AngularFirestore,
@@ -57,7 +57,7 @@ export class ClipService implements Resolve<IClip | null> {
     )
   }
 
-  updateClip(id: string, title: string) {
+  async updateClip(id: string, title: string) {
     this.clipsCollection.doc(id).update({
       title,
     })
@@ -84,6 +84,7 @@ export class ClipService implements Resolve<IClip | null> {
 
       if (length) {
         const lastDocId = this.pageClips[length - 1].docId
+
         const lastDoc = await this.clipsCollection
           .doc(lastDocId)
           .get()
@@ -93,6 +94,7 @@ export class ClipService implements Resolve<IClip | null> {
       }
 
       const snapshot = await query.get()
+
       snapshot.forEach(doc => {
         this.pageClips.push({
           docId: doc.id,
