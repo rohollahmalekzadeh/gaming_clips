@@ -2,6 +2,9 @@ import {Component} from '@angular/core'
 import {FormControl, FormGroup, Validators} from '@angular/forms'
 import IUser from 'src/app/core/models/user.model'
 
+import {RegisterValidators} from '../validators/register-validators'
+import {EmailTaken} from '../validators/email-taken'
+
 import {AuthService} from 'src/app/core/services/authentication/auth.service'
 
 @Component({
@@ -16,7 +19,11 @@ export class RegisterComponent {
   alertMsg = 'Please wait! Your account is being created.'
 
   name = new FormControl('', [Validators.required, Validators.minLength(3)])
-  email = new FormControl('', [Validators.required, Validators.email])
+  email = new FormControl(
+    '',
+    [Validators.required, Validators.email],
+    [this.emailTakenValidator.validate],
+  )
   password = new FormControl('', [
     Validators.required,
     Validators.pattern(
@@ -35,16 +42,22 @@ export class RegisterComponent {
     Validators.maxLength(11),
   ])
 
-  registerForm = new FormGroup({
-    name: this.name,
-    email: this.email,
-    password: this.password,
-    confirmPassword: this.confirmPassword,
-    phoneNumber: this.phoneNumber,
-    age: this.age,
-  })
+  registerForm = new FormGroup(
+    {
+      name: this.name,
+      email: this.email,
+      password: this.password,
+      confirmPassword: this.confirmPassword,
+      phoneNumber: this.phoneNumber,
+      age: this.age,
+    },
+    [RegisterValidators.match('password', 'confirmPassword')],
+  )
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private emailTakenValidator: EmailTaken,
+  ) {}
 
   async register() {
     this.inSubmission = true
