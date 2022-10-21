@@ -7,12 +7,13 @@ export class RegisterValidators {
   ): ValidatorFn {
     return (group: AbstractControl): ValidationErrors | null => {
       const control = group.get(controlName)
-      const controlMatching = group.get(matchingControlName)
+      const matchingControl = group.get(matchingControlName)
 
-      if (!control || !controlMatching) return {controlNotFound: true}
+      if (!control || !matchingControl) return {controlNotFound: true}
 
       const error =
-        control.value !== controlMatching.value ? {noMatch: true} : null
+        control.value !== matchingControl.value ? {noMatch: true} : null
+      matchingControl.setErrors(error)
 
       return error
     }
