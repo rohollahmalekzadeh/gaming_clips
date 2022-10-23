@@ -24,7 +24,7 @@ import {of, combineLatest, BehaviorSubject} from 'rxjs'
 })
 export class ClipService implements Resolve<IClip | null> {
   private clipsCollection: AngularFirestoreCollection<IClip>
-  private pageClips: IClip[] = []
+  pageClips: IClip[] = []
   private pendingReq = false
 
   constructor(
