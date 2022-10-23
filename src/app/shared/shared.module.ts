@@ -11,6 +11,7 @@ import {TabComponent} from './components/tab/tab.component'
 import {EventBlockDirective} from './directives/event-block/event-block.directive'
 import {SafeUrlPipe} from './pipes/safe-url/safe-url.pipe'
 import {ClipListComponent} from './components/clip-list/clip-list.component'
+import {FbTimestampPipe} from './pipes/fbTimestamp/fb-timestamp.pipe'
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {ClipListComponent} from './components/clip-list/clip-list.component'
     EventBlockDirective,
     SafeUrlPipe,
     ClipListComponent,
+    FbTimestampPipe,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
   exports: [
@@ -30,6 +32,7 @@ import {ClipListComponent} from './components/clip-list/clip-list.component'
     ModalComponent,
     InputComponent,
     AlertComponent,
+    FbTimestampPipe,
     ClipListComponent,
     EventBlockDirective,
     TabsContainerComponent,
