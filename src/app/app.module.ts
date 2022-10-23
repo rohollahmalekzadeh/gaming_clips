@@ -9,9 +9,7 @@ import {environment} from 'src/environments/environment'
 
 import {SharedModule} from './shared/shared.module'
 import {CoreModule} from './core/core.module'
-import {VideoModule} from './features/video/video.module'
 import {AuthenticationModule} from './features/authentication/authentication.module'
-
 import {AppComponent} from './app.component'
 import {AppRoutingModule} from './app-routing.module'
 import {AboutUsComponent} from './features/about-us/about-us.component'
@@ -29,7 +27,6 @@ import {HomeComponent} from './features/home/home.component'
     BrowserModule,
     SharedModule,
     CoreModule,
-    VideoModule,
     AuthenticationModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
