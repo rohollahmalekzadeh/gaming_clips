@@ -4,7 +4,7 @@
   </app-alert>
 </div>
 
-<form #loginForm="ngForm">
+<form #loginForm="ngForm" (ngSubmit)="login()">
   <div class="w-64 md:w-96">
     <div class="relative mb-4 md:mb-7">
       <label
@@ -32,7 +32,7 @@
       <label
         for="password"
         class="absolute bg-transparent text-gray-200 opacity-70 top-[10px] left-3 text-xs transition-all duration-300 rounded-md px-1"
-        [ngClass]="labelClass(credentials.email)"
+        [ngClass]="labelClass(credentials.password)"
         >Password</label
       >
       <input
