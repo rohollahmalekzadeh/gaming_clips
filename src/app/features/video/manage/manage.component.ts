@@ -31,6 +31,7 @@ export class ManageComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.queryParamMap.subscribe(({params}: Params) => {
       this.videoOrder = params['sort'] === '2' ? '2' : '1'
+      this.sort$.next(this.videoOrder)
     })
 
     this.clipService.getUserClips(this.sort$).subscribe(docs => {
@@ -41,7 +42,6 @@ export class ManageComponent implements OnInit {
   }
 
   sort($event: Event) {
-    console.log($event)
     const {value} = $event.target as HTMLSelectElement
 
     this.router.navigate([], {
@@ -53,7 +53,6 @@ export class ManageComponent implements OnInit {
 
     this.clipService.getUserClips(this.sort$).subscribe(docs => {
       this.clips = []
-
       for (let doc of docs) this.clips.push({docId: doc.id, ...doc.data()})
     })
   }

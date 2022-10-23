@@ -1,5 +1,5 @@
 <!-- Top Bar -->
-<div class="container mx-auto my-28 bg-secondary p-6">
+<div class="container mx-auto my-8 bg-secondary p-6">
   <div class="rounded relative flex justify-between">
     <a
       routerLink="/upload"
@@ -40,6 +40,7 @@
         <span [routerLink]="['/']" class="mb-2">{{ clip.title }}</span>
         <a
           href="#"
+          (click)="copyToClipboard($event, clip.docId)"
           class="bg-gray-400 text-white text-right px-2 py-1 ml-2 text-xs rounded hover:bg-gray-500 transition duration-300"
           >Copy link</a
         >
