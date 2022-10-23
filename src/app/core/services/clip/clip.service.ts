@@ -49,7 +49,7 @@ export class ClipService implements Resolve<IClip | null> {
 
         const query = this.clipsCollection.ref
           .where('uid', '==', user.uid)
-          .orderBy('timestamp', sort == '1' ? 'asc' : 'desc')
+          .orderBy('timestamp', sort == '1' ? 'desc' : 'asc')
 
         return query.get()
       }),
@@ -105,7 +105,6 @@ export class ClipService implements Resolve<IClip | null> {
       this.pendingReq = false
     } catch (e) {
       this.pendingReq = false
-      console.log(e)
     }
   }
 
