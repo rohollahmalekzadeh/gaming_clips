@@ -33,7 +33,9 @@
 
       <p class="mb-0">
         <span class="text-gray-300">{{ clip.displayName }} &#183; </span>
-        <span class="text-gray-400 text-xs">{{ clip.timestamp }}</span>
+        <span class="text-gray-400 text-xs">{{
+          clip.timestamp | fbTimestamp
+        }}</span>
       </p>
     </div>
   </a>

@@ -1,11 +1,12 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core'
-import {Router} from '@angular/router'
 import {ClipService} from 'src/app/core/services/clip/clip.service'
+import {DatePipe} from '@angular/common'
 
 @Component({
   selector: 'app-clip-list',
   templateUrl: './clip-list.component.html',
   styleUrls: ['./clip-list.component.css'],
+  providers: [DatePipe],
 })
 export class ClipListComponent implements OnInit, OnDestroy {
   @Input() scrollable = true
