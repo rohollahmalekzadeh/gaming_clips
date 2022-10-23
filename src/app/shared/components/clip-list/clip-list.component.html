@@ -1,7 +1,7 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
   <a
     *ngFor="let clip of clipService.pageClips"
-    [routerLink]="['/', clip.docId]"
+    [routerLink]="['/', 'clip', clip.docId]"
     class="mt-6 rounded-tl-3xl rounded-br-3xl bg-secondary transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-gray-300 transition duration -300"
   >
     <img
