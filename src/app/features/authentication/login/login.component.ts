@@ -17,9 +17,7 @@ export class LoginComponent {
     password: '',
   }
 
-  constructor(public authService: AngularFireAuth) {
-    console.log(this.authService)
-  }
+  constructor(public authService: AngularFireAuth) {}
 
   async login() {
     this.inSubmission = true

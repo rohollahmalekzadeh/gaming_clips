@@ -37,7 +37,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   handleScroll = () => {
     const {scrollTop} = document.documentElement
-    console.log(scrollTop)
 
     this.opacity = scrollTop > 100 ? true : false
   }
